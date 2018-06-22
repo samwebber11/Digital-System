@@ -17,14 +17,14 @@ module.exports= function(app,passport)
 
 	app.get('/signup',function(req,res)
 	{
-		res.render('signup.ejs',{message: req.flash('signUpMessage')});
+		res.render('signup.ejs',{message: req.flash('signupMessage')});
 	});
 	app.post('/signup',passport.authenticate('local-signup',{
 		successRedirect:'/profile',
 		failureRedirect : '/signup',
 		failureFlash : true
 	}));
-	app.get('./profile',isLoggedIn,function(req,res)
+	app.get('/profile',isLoggedIn,function(req,res)
 	{
 		res.render('profile.ejs',{
 			user:req.user
